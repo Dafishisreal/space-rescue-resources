@@ -13,7 +13,6 @@ class Title(RoomObject):
 
         self.handle_key_events = True
 
-        def key_pressed(self, key):
-            
-            if key[pygame.K_SPACE]:
-                self.room.running = False 
+    def key_pressed(self, key):
+         if key[pygame.K_SPACE]:
+             self.room.running = False 
