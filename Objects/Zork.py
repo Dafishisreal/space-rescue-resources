@@ -1,5 +1,6 @@
 from GameFrame import Level, RoomObject
 from GameFrame import RoomObject, Globals
+from Objects.Asteroids import Asteroid
 import random
 
 class Zork(RoomObject):
@@ -8,8 +9,16 @@ class Zork(RoomObject):
         image = self.load_image("Zork.png")
         self.set_image(image,135,165)
         self.y_speed = random.choice([-10,10])
+        asteroid_spawn_time = random.randint(15,150)
+        self.set_timer(asteroid_spawn_time, self.spawn_asteroid)
     def keep_in_room(self): 
         if self.y < 0 or self.y > Globals.SCREEN_HEIGHT - self.height:
             self.y_speed *= -1
     def step(self):
         self.keep_in_room()
+    def spawn_asteroid(self):
+        new_asteroid = Asteroid(self.room, self.x, self.y + self.height/2)
+        self.room.add_room_object(new_asteroid)
+        asteroid_spawn_time = random.randint(15, 150)
+        self.set_timer(asteroid_spawn_time, self.spawn_asteroid)
+    
