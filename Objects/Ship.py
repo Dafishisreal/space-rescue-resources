@@ -14,11 +14,19 @@ class Ship(RoomObject):
             self.y -= 10
         elif key[pygame.K_s]:
             self.y += 10
+        if key[pygame.K_a]:
+            self.x -= 10
+        elif key[pygame.K_d]:
+            self.x += 10
     def keep_in_room(self):
         if self.y < 0: 
             self.y = 0 
         elif self.y + self.height > Globals.SCREEN_HEIGHT:
             self.y = Globals.SCREEN_HEIGHT - self.height
+        if self.x < 0: 
+            self.x = 0 
+        elif self.x + self.width > Globals.SCREEN_WIDTH:
+            self.x = Globals.SCREEN_WIDTH - self.width
     def step(self):
         self.keep_in_room()
        
