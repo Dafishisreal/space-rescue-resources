@@ -11,13 +11,13 @@ class Ship(RoomObject):
         self.handle_key_events = True
     def key_pressed(self, key):
         if key[pygame.K_w]:
-            self.y -= 15
+            self.y -= 30
         elif key[pygame.K_s]:
-            self.y += 15
+            self.y += 30
         elif key[pygame.K_a]:
-            self.x -= 15
+            self.x -= 30
         elif key[pygame.K_d]:
-            self.x += 15
+            self.x += 30
     def keep_in_room(self):
         if self.y < 0: 
             self.y = 0 

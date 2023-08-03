@@ -35,9 +35,16 @@ class Asteroid(RoomObject):
         if self.y < 0:
             self.y = 0
             self.y_speed *= -1
-        elif self.y > Globals.SCREEN_HEIGHT - self.height:
-            self.y = Globals.SCREEN_HEIGHT - self.height
+        elif self.y > Globals.SCREEN_HEIGHT*2 - self.height:
+            self.y = Globals.SCREEN_HEIGHT*2 - self.height
             self.y_speed *= -1
+        elif self.x < 0:
+            self.x = 0
+            self.x_speed *= -1
+        elif self.x > Globals.SCREEN_WIDTH*2 - self.width:
+            self.x = Globals.SCREEN_WIDTH*2 - self.width
+            self.x_speed *= -1
+        
             
     def outside_of_room(self):
         """
