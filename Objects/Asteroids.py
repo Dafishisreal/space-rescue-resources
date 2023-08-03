@@ -60,7 +60,6 @@ class Asteroid(RoomObject):
     def handle_collision(self, other, other_type):
         if other_type == "Ship":
             self.room.running = False
-    def handle_collision(self, other, other_type):
         if other_type == "Laser":
             self.delete_object(self)
     

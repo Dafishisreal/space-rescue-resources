@@ -15,15 +15,15 @@ class Ship(RoomObject):
             self.y -= 30
         elif key[pygame.K_s]:
             self.y += 30
-        elif key[pygame.K_a]:
+        if key[pygame.K_a]:
             self.x -= 30
-        elif key[pygame.K_d]:
+        if key[pygame.K_d]:
             self.x += 30 
         if key[pygame.K_SPACE]:
             self.shoot_laser()
-        elif key[pygame.K_e]:
+        if key[pygame.K_e]:
             self.rotate(30)
-        elif key[pygame.K_q]:
+        if key[pygame.K_q]:
             self.rotate(-30)
     def keep_in_room(self):
         if self.y < 0: 
