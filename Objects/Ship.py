@@ -1,5 +1,6 @@
 from GameFrame import Level, RoomObject
 from GameFrame import RoomObject, Globals
+from Objects.Laser import Laser
 import pygame
 
 class Ship(RoomObject):
@@ -18,6 +19,8 @@ class Ship(RoomObject):
             self.x -= 30
         elif key[pygame.K_d]:
             self.x += 30
+        if key[pygame.K_SPACE]:
+            self.shoot_laser()
     def keep_in_room(self):
         if self.y < 0: 
             self.y = 0 
@@ -29,4 +32,9 @@ class Ship(RoomObject):
             self.x = Globals.SCREEN_WIDTH - self.width
     def step(self):
         self.keep_in_room()
+    def shoot_laser(self):
+        new_laser = Laser(self.room, 
+                          self.x + self.width,
+                          self.y +self.height/2-4)
+        self.room.add_room_object(new_laser)
        
