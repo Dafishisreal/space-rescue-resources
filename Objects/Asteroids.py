@@ -62,4 +62,6 @@ class Asteroid(RoomObject):
             self.room.running = False
         if other_type == "Laser":
             self.delete_object(self)
+        if other_type == "Astronaut":
+            self.room.delete_object(other)
     
