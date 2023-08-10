@@ -13,7 +13,7 @@ class Zork(RoomObject):
         asteroid_spawn_time = random.randint(15,150)
         self.set_timer(asteroid_spawn_time, self.spawn_asteroid)
         astronaut_spawn_time = random.randint(30,200)
-        self.set_image(astronaut_spawn_time,self.spawn_astronaut)
+        self.set_timer(astronaut_spawn_time, self.spawn_astronaut)
     def keep_in_room(self): 
         if self.y < 0 or self.y > Globals.SCREEN_HEIGHT - self.height:
             self.y_speed *= -1
