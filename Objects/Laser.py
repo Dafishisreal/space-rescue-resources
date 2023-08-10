@@ -11,3 +11,10 @@ class Laser(RoomObject):
     def outside_of_room(self):
         if self.x > Globals.SCREEN_WIDTH:
             self.room.delete_object(self)
+    def handle_collision(self, other, other_type):
+        if other_type == "Asteroid":
+            self.delete_object(self)
+            self.room.score.update_score(5)
+        if other_type == "Astronaut":
+            self.room.delete_object(other)
+            self.room.score.update_score(-10)
