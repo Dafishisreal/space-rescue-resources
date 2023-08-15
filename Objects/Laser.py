@@ -6,6 +6,8 @@ class Laser(RoomObject):
         image = self.load_image("Laser.png")
         self.set_image(image,33,9)
         self.set_direction(0,20)
+        self.register_collision_object("Astronaut")
+        self.register_collision_object("Asteroid")
     def step(self): 
         self.outside_of_room()
     def outside_of_room(self):
@@ -16,5 +18,5 @@ class Laser(RoomObject):
             self.delete_object(self)
             self.room.score.update_score(5)
         if other_type == "Astronaut":
-            self.room.delete_object(other_type)
+            self.room.delete_object(other)
             self.room.score.update_score(-10)
