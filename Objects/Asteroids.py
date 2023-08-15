@@ -60,7 +60,12 @@ class Asteroid(RoomObject):
             self.room.delete_object(self)
     def handle_collision(self, other, other_type):
         if other_type == "Ship":
-            self.room.running = False
+            self.room.delete_object(self)
+            Globals.LIVES -= 1
+            if Globals.LIVES > 0:
+                self.room.lives.update_image()
+            else:
+                self.room.running = False
         if other_type == "Laser":
             self.room.delete_object(self)
             self.room.score.update_score(5)
