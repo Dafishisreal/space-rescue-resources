@@ -41,4 +41,6 @@ class Ship(RoomObject):
                           self.x + self.width,
                           self.y +self.height/2-4)
         self.room.add_room_object(new_laser)
+        self.set_timer(20, self.shoot_laser)
+
        

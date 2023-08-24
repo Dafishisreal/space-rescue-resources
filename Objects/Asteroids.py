@@ -37,17 +37,17 @@ class Asteroid(RoomObject):
         """
         Keeps the asteroid inside the top and bottom room limits
         """
-        if self.y < 0:
-            self.y = 0
+        if self.y < -100:
+            self.y = -100
             self.y_speed *= -1
-        elif self.y > Globals.SCREEN_HEIGHT*2 - self.height:
-            self.y = Globals.SCREEN_HEIGHT*2 - self.height
+        elif self.y > (Globals.SCREEN_HEIGHT + 100) - self.height:
+            self.y = (Globals.SCREEN_HEIGHT + 100) - self.height
             self.y_speed *= -1
-        elif self.x < 0:
-            self.x = 0
+        elif self.x < -100:
+            self.x = -100
             self.x_speed *= -1
-        elif self.x > Globals.SCREEN_WIDTH*2 - self.width:
-            self.x = Globals.SCREEN_WIDTH*2 - self.width
+        elif self.x > (Globals.SCREEN_WIDTH + 100) - self.width:
+            self.x = (Globals.SCREEN_WIDTH + 100) - self.width
             self.x_speed *= -1
         
             
@@ -55,7 +55,7 @@ class Asteroid(RoomObject):
         """
         removes asteroid that have exited the room
         """
-        if self.x + self.width < 0:
+        if self.x + self.width < -110:
             print("asteroid deleted")
             self.room.delete_object(self)
     def handle_collision(self, other, other_type):

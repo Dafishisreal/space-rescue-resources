@@ -17,7 +17,7 @@ class Lives(RoomObject):
     def __init__(self,room, x: int, y : int):
         RoomObject.__init__(self,room,x,y)
         self.lives_icon = []
-        Globals.LIVES = 5
+        Globals.LIVES = 3
         for index in range(6):
             self.lives_icon.append(self.load_image(f"Lives_frames/Lives_{index}.png"))
         self.update_image()

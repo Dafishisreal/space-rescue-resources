@@ -1,4 +1,4 @@
-from GameFrame import Level, RoomObject 
+from GameFrame import Level, RoomObject,Globals
 class Astronaut(RoomObject):
     def __init__(self,room,x,y):
         RoomObject.__init__(self,room,x,y)
@@ -10,6 +10,7 @@ class Astronaut(RoomObject):
         self.outside_of_room()
     def handle_collision(self, other, other_type):
         if other_type == "Ship":
+            self.room.score.update_score(50)
             self.room.delete_object(self)
     def outside_of_room(self):
         if self.x +self.width <0:
