@@ -43,5 +43,5 @@ while Globals.running:
 
     if Globals.exiting:
         break
-
+ 
 sys.exit() 

@@ -10,7 +10,6 @@ class Ship(RoomObject):
         image = self.load_image("Ship.png")
         self.set_image(image,100,100)
         self.handle_key_events = True
-        self.z = 0
         self.new_laser_number = 0
     def key_pressed(self, key,):
         if key[pygame.K_w]:
@@ -22,8 +21,9 @@ class Ship(RoomObject):
         if key[pygame.K_d]:
             self.x += 30 
         if key[pygame.K_SPACE]:
-            if self.new_laser_number <= 10:
-                self.Laser_timer()
+            if self.new_laser_number == 0: 
+                self.new_laser_number += 1
+                self.set_timer(10,self.delete_laser)
         if key[pygame.K_e]:
             self.rotate(30)
         if key[pygame.K_q]:
@@ -40,15 +40,12 @@ class Ship(RoomObject):
     def step(self):
         self.keep_in_room()
     def Laser_timer(self):
-        self.set_timer(1,self.shoot_laser)
+        self.set_timer(10,self.delete_laser)
     def shoot_laser(self):
         new_laser = Laser(self.room, 
                           self.x + self.width,
                           self.y +self.height/2-4)
         self.room.add_room_object(new_laser)
-        self.new_laser_number += 1
-    def delete_laser(self,number):
-        self.new_laser_number -= number
+    def delete_laser(self):
+        self.shoot_laser()
 
-
-       
