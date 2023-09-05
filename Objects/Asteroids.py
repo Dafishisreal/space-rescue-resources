@@ -62,9 +62,9 @@ class Asteroid(RoomObject):
         if other_type == "Ship":
             self.room.delete_object(self)
             Globals.LIVES -= 1
+            self.room.ship_damage.play()
             if Globals.LIVES > 0:
                 self.room.lives.update_image()
-                self.room.ship_damage.play()
             else:
                 self.room.running = False
         if other_type == "Laser":
