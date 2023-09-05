@@ -17,3 +17,4 @@ class GamePlay(Level):
         self.add_room_object(self.score)
         self.lives = Lives(self, Globals.SCREEN_HEIGHT- 150,29)
         self.add_room_object(self.lives)
+

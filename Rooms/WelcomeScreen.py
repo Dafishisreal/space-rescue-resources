@@ -10,3 +10,5 @@ class WelcomeScreen(Level):
 
         self.set_background_image("Background.png")
         self.add_room_object(Title(self,240,200))
+        self.Background_sound = self.load_sound("Music.mp3")
+        self.Background_sound.play(loops=1)
