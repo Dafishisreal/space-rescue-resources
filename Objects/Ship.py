@@ -21,9 +21,7 @@ class Ship(RoomObject):
         if key[pygame.K_d]:
             self.x += 30 
         if key[pygame.K_SPACE]:
-            if self.new_laser_number == 0: 
-                self.new_laser_number += 1
-                self.set_timer(10,self.delete_laser)
+            self.shoot_laser()
         if key[pygame.K_e]:
             self.rotate(30)
         if key[pygame.K_q]:
@@ -45,6 +43,7 @@ class Ship(RoomObject):
         new_laser = Laser(self.room, 
                           self.x + self.width,
                           self.y +self.height/2-4)
+        self.room.laser_shoot.play()
         self.room.add_room_object(new_laser)
     def delete_laser(self):
         self.shoot_laser()

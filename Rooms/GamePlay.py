@@ -17,4 +17,9 @@ class GamePlay(Level):
         self.add_room_object(self.score)
         self.lives = Lives(self, Globals.SCREEN_HEIGHT- 150,29)
         self.add_room_object(self.lives)
+        self.laser_shoot = self.load_sound("Laser_shot.ogg")
+        self.asteroid_shot = self.load_sound("Asteroid_shot.wav")
+        self.astronaut_hit = self.load_sound("Astronaut_hit.ogg")
+        self.astronaut_saved = self.load_sound("Astronaut_saved.ogg")
+        self.ship_damage = self.load_sound("Ship_damage.ogg")
 
