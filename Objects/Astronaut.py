@@ -12,7 +12,7 @@ class Astronaut(RoomObject):
         if other_type == "Ship":
             self.room.score.update_score(50)
             self.room.delete_object(self)
-            self.room.asteroid_saved.play()
+            self.room.astronaut_saved.play()
     def outside_of_room(self):
         if self.x +self.width <0:
             self.room.delete_object(self)
