@@ -69,6 +69,7 @@ class Asteroid(RoomObject):
                 self.room.running = False
         if other_type == "Laser":
             self.room.delete_object(self)
+            self.room.delete_object(other)
             self.room.score.update_score(5)
             self.room.asteroid_shot.play()
     

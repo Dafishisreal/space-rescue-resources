@@ -13,10 +13,7 @@ class Laser(RoomObject):
         self.outside_of_room()
     def outside_of_room(self):
         if self.x > Globals.SCREEN_WIDTH:
-            self.room.delete_object(self)
-            
-            
-            
+            self.room.delete_object(self)      
     def spawn_laser(self): 
         new_laser = Laser(self.room, 
                           self.x + self.width,
@@ -27,6 +24,7 @@ class Laser(RoomObject):
     def handle_collision(self, other, other_type):
         if other_type == "Asteroid":
             self.delete_object(self)
+            self.delete_object(other)
             self.room.score.update_score(5)
             self.room.asteroid_shot.play()
         if other_type == "Astronaut":
