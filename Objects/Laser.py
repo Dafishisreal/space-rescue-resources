@@ -2,11 +2,12 @@ from GameFrame import RoomObject, Globals
 from Objects import Ship
 
 class Laser(RoomObject):
-    def __init__(self, room, x , y):
+    def __init__(self, room, x , y,angle):
         RoomObject.__init__(self, room, x ,y)
+        self.angle = angle 
         image = self.load_image("Laser.png")
         self.set_image(image,33,9)
-        self.set_direction(0,20)
+        self.set_direction(self.angle,20)
         self.register_collision_object("Astronaut")
         self.register_collision_object("Asteroid")
     def step(self): 

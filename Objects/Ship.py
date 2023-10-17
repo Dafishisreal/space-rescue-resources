@@ -13,13 +13,11 @@ class Ship(RoomObject):
         self.can_shoot = True
     def key_pressed(self, key,):
         if key[pygame.K_w]:
-            self.y -= 30
+            self.Angle = self.curr_rotation
+            self.set_direction(self.Angle,10)
         elif key[pygame.K_s]:
-            self.y += 30
-        if key[pygame.K_a]:
-            self.x -= 30
-        if key[pygame.K_d]:
-            self.x += 30 
+             self.Angle = self.curr_rotation
+             self.set_direction(self.Angle,-10)
         if key[pygame.K_SPACE]:
             self.shoot_laser()
         if key[pygame.K_e]:
@@ -38,12 +36,14 @@ class Ship(RoomObject):
     def step(self):
         self.keep_in_room()
     def shoot_laser(self):
+       self.Angle = self.curr_rotation
        if self.can_shoot: 
             new_laser = Laser(self.room, 
                               self.x + self.width,
-                              self.y +self.height/2-4)
+                              self.y +self.height/2-4,int(self.Angle))
             self.room.add_room_object(new_laser)
-            self.can_shoot = False 
+            self.can_shoot = False
+
             self.set_timer(10,self.reset_shot)
     def reset_shot(self):
         self.can_shoot = True 
